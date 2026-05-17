@@ -1,0 +1,14 @@
+torch
+transformers
+diffusers
+accelerate
+sentence-transformers
+open-clip-torch
+scikit-learn
+spacy
+pandas
+numpy
+matplotlib
+Pillow
+tqdm
+google-generativeai
