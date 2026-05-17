@@ -125,6 +125,11 @@ Images generated using RealVisXL V5.0.
 - RealVisXL
 
 ---
+## External Storage
+
+- Google Drive: [https://your-link-here](https://drive.google.com/drive/folders/1GuLpKhCkggC8is65pjrXlatwgCXHxqDF?usp=drive_link)
+
+---
 
 # Notes
 
