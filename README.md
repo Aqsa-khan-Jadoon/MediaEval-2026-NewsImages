@@ -2,81 +2,77 @@
 
 ## Group Information
 
-- **Group Name:** FAST-MS(DS)
-- **Institution:** FAST National University of Computer and Emerging Sciences
-- **Program:** Master of Science in Data Science
-- **Submission Date:** May 17, 2026
+- Group Name: FAST-MS
+- Institution: FAST National University of Computer and Emerging Sciences
+- Program: Master of Science in Data Science
+- Submission Date: May 2026
 
 ---
 
 # Overview
 
-This repository contains our submission for the NewsImages Challenge (MediaEval 2026). The objective of the challenge is to recommend or generate a relevant image for a given news article title.
+This repository contains our submission for the MediaEval 2026 NewsImages Challenge. The task is to recommend or generate a relevant image for a given news article title.
 
-Our approach combines both **image retrieval** and **text-to-image generation** methodologies to maximize performance across diverse article types, including current events, historical archives, political news, health-related articles, and abstract concepts.
-
-We developed and evaluated multiple retrieval and generation pipelines and submitted a set of complementary runs to capture both factual grounding and generative creativity.
+Our submission includes both retrieval-based and generation-based approaches. Retrieval methods identify the most relevant image from the provided training collection, while the generation method creates a new image directly from the article title.
 
 ---
 
 # Methodology
 
-Our solution consists of two primary components:
+Our solution consists of two components:
 
-1. **Retrieval-Based Image Recommendation**
-2. **Generative Image Synthesis**
+1. Retrieval-Based Image Recommendation
+2. Text-to-Image Generation
 
 ---
 
 # Retrieval-Based Approaches
 
-Retrieval-based methods recommend an existing image from the provided training dataset by computing similarity between article titles and associated images.
-
 ## 1. Official Retrieval Baseline
 
-The organizer-provided baseline approach was used as a reference point for benchmarking our improvements.
-
-## 2. Hybrid Retrieval
-
-A weighted combination of:
-
-- CLIP image-text similarity
-- BGE semantic embeddings
-- TF-IDF lexical similarity
-
-## 3. Entity-Enhanced Hybrid Retrieval (Primary Submission)
-
-Our strongest retrieval system extends the hybrid model by incorporating named entity overlap extracted using spaCy.
+The organizer-provided retrieval baseline was used as a reference system.
 
 ### Components
 
-- OpenCLIP ViT-L-14
-- BAAI BGE Base EN v1.5
-- TF-IDF Vectorizer
-- spaCy Named Entity Recognition
-
-### Weighted Fusion
-
-- CLIP Similarity: 25%
-- BGE Semantic Similarity: 45%
-- TF-IDF Similarity: 10%
-- Named Entity Overlap: 20%
-
-## 4. MPNet Semantic Retrieval
-
-Dense semantic retrieval using the Sentence Transformers `all-mpnet-base-v2` model.
+- OpenCLIP image-text embeddings
+- Cosine similarity matching
 
 ---
 
-# Generative Approaches
+## 2. Hybrid Retrieval
 
-## 1. FLUX
+A weighted retrieval approach combining semantic and lexical similarity measures.
 
-Images generated using FLUX.1 Schnell.
+### Components
 
-## 2. RealVisXL
+- OpenCLIP embeddings
+- BGE semantic embeddings
+- TF-IDF similarity
 
-Images generated using RealVisXL V5.0.
+### Weighted Fusion
+
+- CLIP Similarity: 30%
+- BGE Similarity: 50%
+- TF-IDF Similarity: 20%
+
+---
+
+## 3. Basic Retrieval
+
+A semantic retrieval system based solely on dense text embeddings.
+
+### Components
+
+- BAAI BGE Base EN v1.5
+- Cosine similarity retrieval
+
+---
+
+# Generative Approach
+
+## RealVisXL Generation
+
+Images were generated directly from article titles using RealVisXL V5.0.
 
 ### Generation Settings
 
@@ -84,68 +80,63 @@ Images generated using RealVisXL V5.0.
 - Inference Steps: 6
 - Guidance Scale: 4.0
 - CPU Offloading Enabled
-- Attention and VAE Slicing Enabled
+- Memory-Efficient Attention Enabled
 
 ---
 
 # Dataset Utilized
 
 - Training Dataset: 8,500 news articles with associated images
-- Evaluation Dataset: ~12,000 articles and images
-- Test Dataset: 800 article titles requiring image recommendation or generation
+- Test Dataset: 800 article titles requiring image recommendation or image generation
 
 ---
 
 # Submitted Runs
 
-| Run ID | Retrieval Method | Generation Model |
-|------:|------------------|-----------------|
-| 1 | Official Retrieval Baseline | None |
-| 2 | Hybrid Retrieval | None |
-| 3 | Entity-Enhanced Hybrid Retrieval | None |
-| 4 | MPNet Semantic Retrieval | None |
-| 5 | FLUX-Based Generation | FLUX |
-| 6 | RealVisXL-Based Generation | RealVisXL |
+| Run ID | Method |
+|---------|---------|
+| 1 | Official Retrieval Baseline |
+| 2 | Hybrid Retrieval |
+| 3 | Basic Retrieval |
+| 4 | RealVisXL Generation |
 
 ---
 
 # Key Technologies
 
 - Python
-- Jupyter Notebook
 - PyTorch
 - Hugging Face Transformers
 - Hugging Face Diffusers
-- Sentence Transformers
 - OpenCLIP
 - BGE Embeddings
 - TF-IDF
-- spaCy
-- FLUX
 - RealVisXL
-
----
-## External Storage
-
-- Google Drive: [https://drive.google.com/drive/folders/1GuLpKhCkggC8is65pjrXlatwgCXHxqDF?usp=drive_link]
 
 ---
 
 # Notes
 
-- Intermediate embeddings and score matrices were cached to reduce computation time.
-- Kaggle and Google Colab were used for large-scale experimentation.
-- SDXL models were optimized using CPU offloading and memory-efficient settings.
+- Embeddings were precomputed and cached to improve retrieval efficiency.
+- Experiments were conducted using Google Colab and Kaggle environments.
+- RealVisXL was optimized using memory-efficient inference settings to accommodate limited computational resources.
 
 ---
 
 # Contact
 
-- **Team:** FAST-MS(DS)
-- **Institution:** FAST National University of Computer and Emerging Sciences
+- Team: FAST-MS
+- Institution: FAST National University of Computer and Emerging Sciences
 
+---
+
+# External Storage
+
+The submitted run files and generated images are available at:
+
+Google Drive: [https://drive.google.com/drive/folders/1GuLpKhCkggC8is65pjrXlatwgCXHxqDF?usp=drive_link](https://drive.google.com/drive/folders/1GuLpKhCkggC8is65pjrXlatwgCXHxqDF?usp=drive_link)]
 ---
 
 # Acknowledgment
 
-We thank the MediaEval NewsImages organizers for providing the dataset, evaluation framework, and benchmark.
+We thank the MediaEval NewsImages organizers for providing the dataset, benchmark framework, and evaluation resources.
