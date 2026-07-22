@@ -262,8 +262,6 @@ We sincerely thank the organizers of the **MediaEval 2026 NewsImages Challenge**
 - FAST National University of Computer and Emerging Sciences
 - GitHub: https://github.com/Aqsa-khan-Jadoon
 
-**Muhammad Rafi**
-
 ---
 
 ⭐ **If you find this repository useful, consider giving it a star.**
