@@ -31,7 +31,7 @@ This repository accompanies our published system description paper and contains 
 - Muhammad Rafi
 
 <p align="center">
-  <img src="docs/Paper First Page.png" width="850">
+  <img src="docs/Paper First Page.png" width="650">
 </p>
 
 📄 **Paper**
@@ -49,7 +49,7 @@ Our proposed framework achieved **2nd Place** in the **MediaEval 2026 NewsImages
 | MediaEval 2026 NewsImages Challenge | 🥈 2nd Place |
 
 <p align="center">
-  <img src="docs/leaderboard.png" width="900">
+  <img src="docs/Leaderboard.png" width="500">
 </p>
 
 Official Leaderboard
