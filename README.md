@@ -1,108 +1,161 @@
-# NewsImages Challenge Submission
+# 🥈 MediaEval 2026 NewsImages Challenge – 2nd Place Solution
 
-## Group Information
+[![MediaEval 2026](https://img.shields.io/badge/MediaEval-2026-blue)]()
+[![Ranking](https://img.shields.io/badge/Rank-2nd%20Place-gold)]()
+[![Paper](https://img.shields.io/badge/Paper-Published-success)]()
+[![License](https://img.shields.io/badge/License-MIT-green)]()
 
-- Group Name: FAST-MS
-- Institution: FAST National University of Computer and Emerging Sciences
-- Program: Master of Science in Data Science
-- Submission Date: May 2026
+Official implementation of our **2nd Place** solution for the **MediaEval 2026 NewsImages Challenge**.
 
----
-
-# Overview
-
-This repository contains our submission for the MediaEval 2026 NewsImages Challenge. The task is to recommend or generate a relevant image for a given news article title.
-
-Our submission includes both retrieval-based and generation-based approaches. Retrieval methods identify the most relevant image from the provided training collection, while the generation method creates a new image directly from the article title.
+Our work proposes a hybrid image recommendation framework that combines **retrieval-based methods**, **semantic search**, and **state of the art image generation** to recommend or generate visually relevant images for news article titles.
 
 ---
 
-# Methodology
+# 🏆 Achievements
 
-Our solution consists of two components:
-
-1. Retrieval-Based Image Recommendation
-2. Text-to-Image Generation
+- 🥈 **Secured 2nd Place** in the MediaEval 2026 NewsImages Challenge.
+- 📄 **Research paper officially published** in the MediaEval 2026 Working Notes Proceedings.
+- 🔍 Proposed a hybrid retrieval framework combining CLIP, BGE embeddings, and TF-IDF.
+- 🎨 Explored both retrieval and generative approaches using **RealVisXL**.
 
 ---
 
-# Retrieval-Based Approaches
+# 📄 Publication
 
-## 1. Official Retrieval Baseline
+**Title**
 
-The organizer-provided retrieval baseline was used as a reference system.
+> **Hybrid Retrieval and Generative Image Recommendation for News Articles: The FAST-MS(DS) Approach at MediaEval 2026**
 
-### Components
+**Authors**
+
+- Aqsa Khan Jadoon
+- Muhammad Rafi
+
+📄 Paper
+
+https://2026.multimediaeval.com/paper22.pdf
+
+---
+
+# 🏅 Official Competition Results
+
+Our submission achieved **2nd Place** in the MediaEval 2026 NewsImages Challenge.
+
+| Competition | Ranking |
+|-------------|---------|
+| MediaEval 2026 NewsImages Challenge | 🥈 2nd Place |
+
+Official leaderboard:
+
+https://github.com/Informfully/Challenges/blob/692eb1e46fc330f64a9ff29eea0fbdaff7e80c68/newsimages26/images/survey_results/_survey_results_26_ALL_TEAMS.xlsx
+
+---
+
+# 👥 Group Information
+
+| Item | Details |
+|------|---------|
+| Team | FAST-MS |
+| Institution | FAST National University of Computer and Emerging Sciences |
+| Program | Master of Science in Data Science |
+| Submission | May 2026 |
+
+---
+
+# 📖 Overview
+
+The **MediaEval 2026 NewsImages Challenge** focuses on recommending or generating an image that best represents a news article title.
+
+Our submission explores both **retrieval-based** and **generation-based** pipelines.
+
+- **Retrieval methods** identify the most relevant image from the provided news image collection.
+- **Generation methods** synthesize a new image directly from the article title using diffusion models.
+
+---
+
+# ⚙️ Methodology
+
+Our framework consists of two major components.
+
+## 1. Retrieval-Based Image Recommendation
+
+Three retrieval strategies were evaluated.
+
+### Official Retrieval Baseline
 
 - OpenCLIP image-text embeddings
-- Cosine similarity matching
+- Cosine similarity
 
 ---
 
-## 2. Hybrid Retrieval
+### Hybrid Retrieval
 
-A weighted retrieval approach combining semantic and lexical similarity measures.
+Our best-performing retrieval approach combines multiple similarity measures through weighted fusion.
 
-### Components
+**Features**
 
 - OpenCLIP embeddings
 - BGE semantic embeddings
 - TF-IDF similarity
 
-### Weighted Fusion
+**Weighted Fusion**
 
-- CLIP Similarity: 30%
-- BGE Similarity: 50%
-- TF-IDF Similarity: 20%
+| Component | Weight |
+|-----------|-------:|
+| OpenCLIP | 30% |
+| BGE Embeddings | 50% |
+| TF-IDF | 20% |
 
 ---
 
-## 3. Basic Retrieval
+### Basic Retrieval
 
-A semantic retrieval system based solely on dense text embeddings.
-
-### Components
+A semantic retrieval system using dense embeddings.
 
 - BAAI BGE Base EN v1.5
-- Cosine similarity retrieval
+- Cosine similarity
 
 ---
 
-# Generative Approach
+## 2. Text-to-Image Generation
 
-## RealVisXL Generation
+### RealVisXL V5.0
 
-Images were generated directly from article titles using RealVisXL V5.0.
+News article titles were directly converted into images using RealVisXL.
 
-### Generation Settings
+**Generation Settings**
 
-- Resolution: 512 × 512
-- Inference Steps: 6
-- Guidance Scale: 4.0
-- CPU Offloading Enabled
-- Memory-Efficient Attention Enabled
-
----
-
-# Dataset Utilized
-
-- Training Dataset: 8,500 news articles with associated images
-- Test Dataset: 800 article titles requiring image recommendation or image generation
+| Parameter | Value |
+|-----------|-------|
+| Resolution | 512 × 512 |
+| Inference Steps | 6 |
+| Guidance Scale | 4.0 |
+| CPU Offloading | Enabled |
+| Memory Efficient Attention | Enabled |
 
 ---
 
-# Submitted Runs
+# 📂 Dataset
 
-| Run ID | Method |
-|---------|---------|
-| 1 | Official Retrieval Baseline |
-| 2 | Hybrid Retrieval |
-| 3 | Basic Retrieval |
-| 4 | RealVisXL Generation |
+| Dataset | Size |
+|----------|-----:|
+| Training Articles | 8,500 |
+| Test Titles | 800 |
 
 ---
 
-# Key Technologies
+# 🚀 Submitted Runs
+
+| Run | Method |
+|------|--------|
+| Run 1 | Official Retrieval Baseline |
+| Run 2 | Hybrid Retrieval |
+| Run 3 | Basic Retrieval |
+| Run 4 | RealVisXL Generation |
+
+---
+
+# 🛠 Technologies
 
 - Python
 - PyTorch
@@ -112,31 +165,50 @@ Images were generated directly from article titles using RealVisXL V5.0.
 - BGE Embeddings
 - TF-IDF
 - RealVisXL
+- Google Colab
+- Kaggle
 
 ---
 
-# Notes
+# 💾 External Resources
 
-- Embeddings were precomputed and cached to improve retrieval efficiency.
-- Experiments were conducted using Google Colab and Kaggle environments.
-- RealVisXL was optimized using memory-efficient inference settings to accommodate limited computational resources.
+The submitted runs and generated images are available on Google Drive.
 
----
-
-# Contact
-
-- Team: FAST-MS
-- Institution: FAST National University of Computer and Emerging Sciences
+https://drive.google.com/drive/folders/1GuLpKhCkggC8is65pjrXlatwgCXHxqDF?usp=drive_link
 
 ---
 
-# External Storage
+# 📌 Notes
 
-The submitted run files and generated images are available at:
+- Embeddings were precomputed and cached for faster retrieval.
+- Experiments were conducted using Google Colab and Kaggle.
+- Memory-efficient inference was employed to enable image generation on limited GPU resources.
 
-Google Drive: [https://drive.google.com/drive/folders/1GuLpKhCkggC8is65pjrXlatwgCXHxqDF?usp=drive_link](https://drive.google.com/drive/folders/1GuLpKhCkggC8is65pjrXlatwgCXHxqDF?usp=drive_link)]
 ---
 
-# Acknowledgment
+# 📚 Citation
 
-We thank the MediaEval NewsImages organizers for providing the dataset, benchmark framework, and evaluation resources.
+If you use this repository in your research, please cite our paper.
+
+```bibtex
+@inproceedings{jadoon2026mediaeval,
+  title={Hybrid Retrieval and Generative Image Recommendation for News Articles: The FAST-MS(DS) Approach at MediaEval 2026},
+  author={Jadoon, Aqsa Khan and Rafi, Muhammad},
+  booktitle={MediaEval 2026 Working Notes Proceedings},
+  year={2026}
+}
+```
+
+---
+
+# 🙏 Acknowledgment
+
+We thank the MediaEval 2026 NewsImages Challenge organizers for providing the dataset, benchmark framework, and evaluation platform.
+
+---
+
+# 📬 Contact
+
+**Aqsa Khan Jadoon**
+
+GitHub: https://github.com/Aqsa-khan-Jadoon
