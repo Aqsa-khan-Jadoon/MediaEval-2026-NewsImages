@@ -1,37 +1,40 @@
 # 🥈 MediaEval 2026 NewsImages Challenge – 2nd Place Solution
 
-[![MediaEval 2026](https://img.shields.io/badge/MediaEval-2026-blue)]()
+[![MediaEval](https://img.shields.io/badge/MediaEval-2026-blue)]()
 [![Ranking](https://img.shields.io/badge/Rank-2nd%20Place-gold)]()
 [![Paper](https://img.shields.io/badge/Paper-Published-success)]()
 [![License](https://img.shields.io/badge/License-MIT-green)]()
 
-Official implementation of our **2nd Place** solution for the **MediaEval 2026 NewsImages Challenge**.
+Official repository for our **2nd Place** solution in the **MediaEval 2026 NewsImages Challenge**.
 
-Our work proposes a hybrid image recommendation framework that combines **retrieval-based methods**, **semantic search**, and **state of the art image generation** to recommend or generate visually relevant images for news article titles.
+This repository accompanies our published system description paper and contains the complete implementation of our retrieval-based and generative approaches for recommending visually relevant images from news article titles.
 
 ---
 
-# 🏆 Achievements
+# 🏆 Highlights
 
-- 🥈 **Secured 2nd Place** in the MediaEval 2026 NewsImages Challenge.
-- 📄 **Research paper officially published** in the MediaEval 2026 Working Notes Proceedings.
-- 🔍 Proposed a hybrid retrieval framework combining CLIP, BGE embeddings, and TF-IDF.
-- 🎨 Explored both retrieval and generative approaches using **RealVisXL**.
+- 🥈 **2nd Place** in the MediaEval 2026 NewsImages Challenge
+- 📄 **Official research paper published** in the MediaEval 2026 Working Notes Proceedings
+- 🔍 Hybrid retrieval framework combining OpenCLIP, BGE embeddings, and TF-IDF
+- 🎨 Retrieval and image generation using **RealVisXL**
+- ⚡ Implemented using PyTorch, Hugging Face, Google Colab, and Kaggle
 
 ---
 
 # 📄 Publication
 
-**Title**
-
-> **Hybrid Retrieval and Generative Image Recommendation for News Articles: The FAST-MS(DS) Approach at MediaEval 2026**
+### Hybrid Retrieval and Generative Image Recommendation for News Articles: The FAST-MS(DS) Approach at MediaEval 2026
 
 **Authors**
 
 - Aqsa Khan Jadoon
 - Muhammad Rafi
 
-📄 Paper
+<p align="center">
+  <img src="docs/Paper First Page.png" width="850">
+</p>
+
+📄 **Paper**
 
 https://2026.multimediaeval.com/paper22.pdf
 
@@ -39,19 +42,23 @@ https://2026.multimediaeval.com/paper22.pdf
 
 # 🏅 Official Competition Results
 
-Our submission achieved **2nd Place** in the MediaEval 2026 NewsImages Challenge.
+Our proposed framework achieved **2nd Place** in the **MediaEval 2026 NewsImages Challenge**, demonstrating the effectiveness of combining semantic retrieval with diffusion-based image generation.
 
-| Competition | Ranking |
-|-------------|---------|
+| Competition | Result |
+|-------------|:------:|
 | MediaEval 2026 NewsImages Challenge | 🥈 2nd Place |
 
-Official leaderboard:
+<p align="center">
+  <img src="docs/leaderboard.png" width="900">
+</p>
+
+Official Leaderboard
 
 https://github.com/Informfully/Challenges/blob/692eb1e46fc330f64a9ff29eea0fbdaff7e80c68/newsimages26/images/survey_results/_survey_results_26_ALL_TEAMS.xlsx
 
 ---
 
-# 👥 Group Information
+# 👥 Team Information
 
 | Item | Details |
 |------|---------|
@@ -66,64 +73,84 @@ https://github.com/Informfully/Challenges/blob/692eb1e46fc330f64a9ff29eea0fbdaff
 
 The **MediaEval 2026 NewsImages Challenge** focuses on recommending or generating an image that best represents a news article title.
 
-Our submission explores both **retrieval-based** and **generation-based** pipelines.
+Our solution explores two complementary strategies:
 
-- **Retrieval methods** identify the most relevant image from the provided news image collection.
-- **Generation methods** synthesize a new image directly from the article title using diffusion models.
+- **Retrieval-Based Image Recommendation** – Selecting the most relevant image from the provided news image collection.
+- **Text-to-Image Generation** – Synthesizing a new image directly from the news title using diffusion models.
+
+The proposed hybrid framework leverages semantic understanding, lexical similarity, and modern generative AI to improve image recommendation quality.
+
+---
+
+# 🏗️ System Architecture
+
+The proposed framework combines both retrieval-based and generative pipelines.
+
+<p align="center">
+  <img src="docs/Pipeline.png" width="900">
+</p>
+
+The retrieval pipeline combines **OpenCLIP**, **BGE semantic embeddings**, and **TF-IDF lexical similarity** through weighted score fusion.
+
+Alongside retrieval, a **RealVisXL** diffusion model generates images directly from article titles, enabling comparison between retrieval-based recommendations and generated visual content.
 
 ---
 
 # ⚙️ Methodology
 
-Our framework consists of two major components.
+## 1️⃣ Retrieval-Based Image Recommendation
 
-## 1. Retrieval-Based Image Recommendation
-
-Three retrieval strategies were evaluated.
+Three retrieval approaches were investigated.
 
 ### Official Retrieval Baseline
 
-- OpenCLIP image-text embeddings
-- Cosine similarity
+The organizer-provided retrieval baseline served as the reference system.
+
+**Components**
+
+- OpenCLIP Image-Text Embeddings
+- Cosine Similarity
 
 ---
 
-### Hybrid Retrieval
+### Hybrid Retrieval (Best Retrieval Model)
 
-Our best-performing retrieval approach combines multiple similarity measures through weighted fusion.
+Our primary retrieval model combines semantic and lexical similarity through weighted fusion.
 
-**Features**
+**Components**
 
-- OpenCLIP embeddings
-- BGE semantic embeddings
-- TF-IDF similarity
+- OpenCLIP Embeddings
+- BGE Semantic Embeddings
+- TF-IDF Similarity
 
-**Weighted Fusion**
+### Weighted Score Fusion
 
 | Component | Weight |
 |-----------|-------:|
 | OpenCLIP | 30% |
-| BGE Embeddings | 50% |
-| TF-IDF | 20% |
+| BGE Semantic Similarity | 50% |
+| TF-IDF Similarity | 20% |
 
 ---
 
 ### Basic Retrieval
 
-A semantic retrieval system using dense embeddings.
+A semantic retrieval approach using dense text embeddings.
+
+**Components**
 
 - BAAI BGE Base EN v1.5
-- Cosine similarity
+- Cosine Similarity
 
 ---
 
-## 2. Text-to-Image Generation
+## 2️⃣ Text-to-Image Generation
 
 ### RealVisXL V5.0
 
-News article titles were directly converted into images using RealVisXL.
+Images were generated directly from article titles using the RealVisXL diffusion model.
 
-**Generation Settings**
+### Generation Settings
 
 | Parameter | Value |
 |-----------|-------|
@@ -140,7 +167,7 @@ News article titles were directly converted into images using RealVisXL.
 | Dataset | Size |
 |----------|-----:|
 | Training Articles | 8,500 |
-| Test Titles | 800 |
+| Test Article Titles | 800 |
 
 ---
 
@@ -155,24 +182,43 @@ News article titles were directly converted into images using RealVisXL.
 
 ---
 
-# 🛠 Technologies
+# 📁 Repository Structure
 
-- Python
-- PyTorch
-- Hugging Face Transformers
-- Hugging Face Diffusers
-- OpenCLIP
-- BGE Embeddings
-- TF-IDF
-- RealVisXL
-- Google Colab
-- Kaggle
+```text
+.
+├── docs
+│   ├── leaderboard.png
+│   ├── paper_first_page.png
+│   └── pipeline.png
+│
+├── NewsImages_officialRetrieval+Fluxgenerated.ipynb
+├── NewsImages-Hybrid-Retrieval-entity-Realvisxl.ipynb
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
+
+---
+
+# 🛠️ Technologies
+
+| Category | Technology |
+|----------|------------|
+| Programming | Python |
+| Deep Learning | PyTorch |
+| NLP | Hugging Face Transformers |
+| Diffusion Models | Hugging Face Diffusers |
+| Vision-Language | OpenCLIP |
+| Text Embeddings | BGE Base EN v1.5 |
+| Lexical Retrieval | TF-IDF |
+| Image Generation | RealVisXL |
+| Development Environment | Google Colab, Kaggle |
 
 ---
 
 # 💾 External Resources
 
-The submitted runs and generated images are available on Google Drive.
+The submitted run files and generated images are available on Google Drive.
 
 https://drive.google.com/drive/folders/1GuLpKhCkggC8is65pjrXlatwgCXHxqDF?usp=drive_link
 
@@ -180,9 +226,10 @@ https://drive.google.com/drive/folders/1GuLpKhCkggC8is65pjrXlatwgCXHxqDF?usp=dri
 
 # 📌 Notes
 
-- Embeddings were precomputed and cached for faster retrieval.
+- Embeddings were precomputed and cached to improve retrieval efficiency.
 - Experiments were conducted using Google Colab and Kaggle.
-- Memory-efficient inference was employed to enable image generation on limited GPU resources.
+- Memory-efficient inference settings enabled diffusion-based image generation on limited computational resources.
+- This repository contains the implementation corresponding to our official MediaEval 2026 submission.
 
 ---
 
@@ -201,9 +248,9 @@ If you use this repository in your research, please cite our paper.
 
 ---
 
-# 🙏 Acknowledgment
+# 🙏 Acknowledgments
 
-We thank the MediaEval 2026 NewsImages Challenge organizers for providing the dataset, benchmark framework, and evaluation platform.
+We sincerely thank the organizers of the **MediaEval 2026 NewsImages Challenge** for providing the benchmark dataset, evaluation framework, and the opportunity to contribute to this research challenge.
 
 ---
 
@@ -211,4 +258,12 @@ We thank the MediaEval 2026 NewsImages Challenge organizers for providing the da
 
 **Aqsa Khan Jadoon**
 
-GitHub: https://github.com/Aqsa-khan-Jadoon
+- AI Engineer | Specialist Engineer – Digitalization
+- FAST National University of Computer and Emerging Sciences
+- GitHub: https://github.com/Aqsa-khan-Jadoon
+
+**Muhammad Rafi**
+
+---
+
+⭐ **If you find this repository useful, consider giving it a star.**
